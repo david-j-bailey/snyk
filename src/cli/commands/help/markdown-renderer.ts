@@ -124,7 +124,8 @@ const htmlUnescapes = {
  */
 function unescape(text: string): string {
   Object.entries(htmlUnescapes).forEach(([escapedChar, unescapedChar]) => {
-    text = text.replaceAll(escapedChar, unescapedChar);
+    const escapedCharRegExp = new RegExp(escapedChar, 'g');
+    text = text.replace(escapedCharRegExp, unescapedChar);
   });
   return text;
 }

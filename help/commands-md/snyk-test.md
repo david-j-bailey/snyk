@@ -115,6 +115,10 @@ Set the project business criticality to one or more values (comma-separated). Al
 (only in `monitor` command)
 Set the project tags to one or more values (comma-separated key value pairs with an "=" separator). e.g. --project-tags=department=finance,team=alpha
 
+### `--tags=<TAG>[,<TAG>]...>`
+
+This is an alias for `--project-tags`.
+
 ### `--policy-path=<PATH_TO_POLICY_FILE>`
 
 Manually pass a path to a snyk policy file.
