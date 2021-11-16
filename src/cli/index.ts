@@ -482,8 +482,13 @@ function validateOutputFile(
   }
 }
 
-main().catch((e) => {
-  console.error('Something unexpected went wrong: ', e.stack);
+function handleUnexpectedError(reason: unknown): never {
+  console.error('Something unexpected went wrong: ', reason);
   console.error('Exit code: ' + EXIT_CODES.ERROR);
   process.exit(EXIT_CODES.ERROR);
-});
+}
+
+process.on('unhandledRejection', handleUnexpectedError);
+process.on('uncaughtException', handleUnexpectedError);
+
+main().catch(handleUnexpectedError);
